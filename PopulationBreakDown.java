@@ -109,7 +109,7 @@ public class PopulationBreakDown extends Configured implements Tool {
 				// Now we parse the string into a JsonElement so we can dig into it
 				JsonElement jsonTree = parser.parse(jsonString);
 				
-				String verified= jsonObject.get("verified").getAsString();
+				String verified= jsonTree.get("verified").getAsString();
 				
 				//Bucket 1 and 2
 				if (verified.equals("true"))
