@@ -1,4 +1,8 @@
 # amazon_analysis_labpart2
+# Analysis Question:
+
+Among reviewers, how does the population break down into these three buckets?  1) all reviews are unverified, 2) all reviews are verified, and 3) mix of unverified and verified reviews.
+
 
 1. Log into dsba-hadoop.uncc.edu using ssh
 2. git clone https://github.com/AzizIsa/amazon_analysis_labpart2.git to clone this repo
