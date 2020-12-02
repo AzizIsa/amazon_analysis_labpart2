@@ -144,7 +144,7 @@ public class PopulationBreakDown extends Configured implements Tool {
 				context.write(new Text("Bucket 3 (all reviewers): " + formattedDate),one);
 				
 								
-				// Here we increment a counter that we can read when the job is done
+				// Here we increment a counter that we can read when the job is done2
 				rowsProcessed.increment(1);
 			} catch (Exception e) {
 				LOG.error("Error in MAP process: " + e.getMessage(), e);
