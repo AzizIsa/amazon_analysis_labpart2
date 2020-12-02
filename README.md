@@ -18,6 +18,8 @@ javac -cp /opt/cloudera/parcels/CDH/lib/hadoop/client/*:/opt/cloudera/parcels/CD
 # Notes:
 hadoop fs -rm -r /user/aisamedi/product_reviews
 
-HADOOP_CLASSPATH=$(hbase mapredcp):/etc/hbase/conf hadoop jar process_products.jar PopulationBreakDown '/user/aisamedi/product_reviews'
 
+``` text
+HADOOP_CLASSPATH=$(hbase mapredcp):/etc/hbase/conf hadoop jar process_products.jar PopulationBreakDown '/user/aisamedi/product_reviews'
+```
 hadoop fs -cat /user/aisamedi/product_fields/*
