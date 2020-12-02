@@ -127,7 +127,7 @@ public class PopulationBreakDown extends Configured implements Tool {
 					}	
 					
 				//Bucket 3
-				context.write(new Text("Bucket 3 (all reviewers): " + verified),one);
+				context.write(new Text("Bucket 3 (all reviewers): "),one);
 				
 								
 				// Here we increment a counter that we can read when the job is done
