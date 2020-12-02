@@ -23,6 +23,8 @@ import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
 import org.apache.hadoop.hbase.mapreduce.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.google.gson.*;
 
@@ -111,23 +113,35 @@ public class PopulationBreakDown extends Configured implements Tool {
 				
 				JsonObject jsonObject = jsonTree.getAsJsonObject();
 
-				String verified= jsonObject.get("verified").getAsString();
-
+				long unixSeconds= jsonObject.get("unixReviewTime").getAsLong();
 				
+
+
+				// convert seconds to milliseconds
+				Date date = new java.util.Date(unixSeconds*1000L); 
+				// the format of your date
+				SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm:ss z"); 
+				// give a timezone reference for formatting (see comment at the bottom)
+				sdf.setTimeZone(java.util.TimeZone.getTimeZone("EST")); 
+				String formattedDate = sdf.format(date);
+				System.out.println(formattedDate);
+
+
+				String verified= jsonObject.get("verified").getAsString();
 				//String reviewerID= jsonObject.get("reviewerID").getAsString();		
 				//Bucket 1 and 2
 				if (verified.equals("true"))
                     { 
 						//System.out.println("Bucket 1(verified): " + reviewerID);
-						context.write(new Text("Bucket 1(verified):" + verified),one);
+						context.write(new Text("Bucket 1(verified):" + formattedDate),one);
 					}
 				else {
 						//System.out.println("Bucket 2 (unverified): " + reviewerID);
-						context.write(new Text("Bucket 2(unverified):" + verified),one);
+						context.write(new Text("Bucket 2(unverified):" + formattedDate),one);
 					}	
 					
 				//Bucket 3
-				context.write(new Text("Bucket 3 (all reviewers): "),one);
+				context.write(new Text("Bucket 3 (all reviewers): " + formattedDate),one);
 				
 								
 				// Here we increment a counter that we can read when the job is done
