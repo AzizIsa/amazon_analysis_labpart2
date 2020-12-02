@@ -9,7 +9,9 @@ Among reviewers, how does the population break down into these three buckets?  1
 3. Go into the repo directory. In this case: cd amazon_analysis_labpart2
 4. Make a "build" directory (if it does not already exist): mkdir build
 5. Compile the java code (all one line). You may see some warnings--that' ok.
+``` text
 javac -cp /opt/cloudera/parcels/CDH/lib/hadoop/client/*:/opt/cloudera/parcels/CDH/lib/hbase/* PopulationBreakDown.java -d build -Xlint
+```
 6. Now we wrap up our code into a Java "jar" file: jar -cvf process_reviews.jar -C build/ .
 
 
