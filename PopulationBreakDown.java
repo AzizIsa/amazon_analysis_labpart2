@@ -62,7 +62,7 @@ public class PopulationBreakDown extends Configured implements Tool {
 
     		// This helper will configure how table data feeds into the "map" method
 		TableMapReduceUtil.initTableMapperJob(
-			"rfox12:reviews_10000",        	// input HBase table name
+			"rfox12:reviews",        	// input HBase table name
 			scan,             		// Scan instance to control CF and attribute selection
 			MapReduceMapper.class,   	// Mapper class
 			Text.class,             	// Mapper output key
