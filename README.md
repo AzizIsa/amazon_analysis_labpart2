@@ -15,11 +15,12 @@ javac -cp /opt/cloudera/parcels/CDH/lib/hadoop/client/*:/opt/cloudera/parcels/CD
 6. Now we wrap up our code into a Java "jar" file: jar -cvf process_reviews.jar -C build/ .
 
 
-# Notes:
+7.(Optional) Remove the previous results folder
 hadoop fs -rm -r /user/aisamedi/product_reviews
 
+8. Execute the Jar File
+HADOOP_CLASSPATH=$(hbase mapredcp):/etc/hbase/conf hadoop jar process_reviews.jar PopulationBreakDown '/user/aisamedi/product_reviews'
 
-``` text
-HADOOP_CLASSPATH=$(hbase mapredcp):/etc/hbase/conf hadoop jar process_products.jar PopulationBreakDown '/user/aisamedi/product_reviews'
-```
-hadoop fs -cat /user/aisamedi/product_fields/*
+9. Verify the Output
+
+hadoop fs -cat /user/aisamedi/product_reviews/*
