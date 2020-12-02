@@ -114,20 +114,20 @@ public class PopulationBreakDown extends Configured implements Tool {
 				String verified= jsonObject.get("verified").getAsString();
 
 				
-				String category= jsonObject.get("category").getAsString();		
+				//String reviewerID= jsonObject.get("reviewerID").getAsString();		
 				//Bucket 1 and 2
 				if (verified.equals("true"))
                     { 
 						//System.out.println("Bucket 1(verified): " + reviewerID);
-						context.write(new Text("Bucket 1(verified):" + category),one);
+						context.write(new Text("Bucket 1(verified):" + verified),one);
 					}
 				else {
 						//System.out.println("Bucket 2 (unverified): " + reviewerID);
-						context.write(new Text("Bucket 2(unverified):" + category),one);
+						context.write(new Text("Bucket 2(unverified):" + verified),one);
 					}	
 					
 				//Bucket 3
-				context.write(new Text("Bucket 3 (all reviewers): " + category),one);
+				context.write(new Text("Bucket 3 (all reviewers): " + verified),one);
 				
 								
 				// Here we increment a counter that we can read when the job is done
