@@ -113,7 +113,7 @@ public class PopulationBreakDown extends Configured implements Tool {
 
 				String verified= jsonObject.get("verified").getAsString();
 
-				String verified= jsonObject.get("verified").getAsString();
+				
 				String reviewerID= jsonObject.get("reviewerID").getAsString();		
 				//Bucket 1 and 2
 				if (verified.equals("true"))
@@ -151,4 +151,3 @@ public class PopulationBreakDown extends Configured implements Tool {
 		}
 	}
 }
-
