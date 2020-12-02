@@ -119,15 +119,15 @@ public class PopulationBreakDown extends Configured implements Tool {
 				if (verified.equals("true"))
                     { 
 						//System.out.println("Bucket 1(verified): " + reviewerID);
-						context.write(new Text("Bucket 1(verified):"),one);
+						context.write(new Text("Bucket 1(verified):" + reviewerID),one);
 					}
 				else {
 						//System.out.println("Bucket 2 (unverified): " + reviewerID);
-						context.write(new Text("Bucket 2(unverified):"),one);
+						context.write(new Text("Bucket 2(unverified):" + reviewerID),one);
 					}	
 					
 				//Bucket 3
-				context.write(new Text("Bucket 3 (all reviewers): "),one);
+				context.write(new Text("Bucket 3 (all reviewers): " + reviewerID),one);
 				
 								
 				// Here we increment a counter that we can read when the job is done
