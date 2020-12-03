@@ -1,0 +1,14 @@
+unverified-Sun	3456621
+unverified-Wed	3321785
+unverified-Sat	3031032
+verified-Sun	20655268
+verified-Wed	19129103
+unverified-Thu	3070401
+unverified-Tue	3374262
+unverified-Mon	3630138
+verified-Sat	16856283
+unverified-Fri	2866810
+verified-Thu	17943830
+verified-Tue	19831194
+verified-Mon	20309806
+verified-Fri	16394709
