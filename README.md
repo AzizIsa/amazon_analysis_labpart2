@@ -1,4 +1,3 @@
-# amazon_analysis_labpart2
 # Analysis Question:
 What is the distribution of verified / unverified by days of the week? Is there a significant difference?
 
@@ -9,7 +8,10 @@ What is the distribution of verified / unverified by days of the week? Is there 
 
 # Steps to Run the code:
 1. Log into dsba-hadoop.uncc.edu using ssh
-2. git clone https://github.com/AzizIsa/amazon_analysis_labpart2.git to clone this repo
+2. Clone this repo
+``` text
+git clone https://github.com/AzizIsa/amazon_analysis_labpart2.git 
+```
 3. Go into the repo directory. In this case: cd amazon_analysis_labpart2
 4. Make a "build" directory (if it does not already exist): 
 ``` text
