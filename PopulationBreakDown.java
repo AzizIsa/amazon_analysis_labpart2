@@ -119,12 +119,15 @@ public class PopulationBreakDown extends Configured implements Tool {
 
 				// convert seconds to milliseconds
 				Date date = new java.util.Date(unixSeconds*1000L); 
-				// the format of your date
-				SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm:ss z"); 
-				// give a timezone reference for formatting (see comment at the bottom)
+				// Extracting Name of the day out of unixtime
+				SimpleDateFormat sdf = new java.text.SimpleDateFormat("E"); 
 				sdf.setTimeZone(java.util.TimeZone.getTimeZone("EST")); 
-				String formattedDate = sdf.format(date);
-				System.out.println(formattedDate);
+				String day_of_the_week = sdf.format(date);
+
+				//Extracting year out of unixtime
+				SimpleDateFormat sdf2 = new java.text.SimpleDateFormat("y"); 
+				sdf2.setTimeZone(java.util.TimeZone.getTimeZone("EST")); 
+				String year = sdf2.format(date);
 
 
 				String verified= jsonObject.get("verified").getAsString();
@@ -133,17 +136,13 @@ public class PopulationBreakDown extends Configured implements Tool {
 				if (verified.equals("true"))
                     { 
 						//System.out.println("Bucket 1(verified): " + reviewerID);
-						context.write(new Text("Bucket 1(verified):" + formattedDate),one);
+						context.write(new Text(year+" verified-" + day_of_the_week),one);
 					}
 				else {
 						//System.out.println("Bucket 2 (unverified): " + reviewerID);
-						context.write(new Text("Bucket 2(unverified):" + formattedDate),one);
+						context.write(new Text(year+" Unverified-" + day_of_the_week),one);
 					}	
-					
-				//Bucket 3
-				context.write(new Text("Bucket 3 (all reviewers): " + formattedDate),one);
-				
-								
+		
 				// Here we increment a counter that we can read when the job is done2
 				rowsProcessed.increment(1);
 			} catch (Exception e) {
