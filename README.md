@@ -15,8 +15,10 @@ mkdir build
 ``` text
 javac -cp /opt/cloudera/parcels/CDH/lib/hadoop/client/*:/opt/cloudera/parcels/CDH/lib/hbase/* PopulationBreakDown.java -d build -Xlint
 ```
-6. Now we wrap up our code into a Java "jar" file: jar -cvf process_reviews.jar -C build/ .
-
+6. Now we wrap up our code into a Java "jar" file: 
+``` text
+jar -cvf process_reviews_total.jar -C build/ .
+```
 
 7.(Optional) Remove the previous results folder
 ``` text
