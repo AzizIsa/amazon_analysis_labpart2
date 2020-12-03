@@ -17,7 +17,7 @@ javac -cp /opt/cloudera/parcels/CDH/lib/hadoop/client/*:/opt/cloudera/parcels/CD
 ```
 6. Now we wrap up our code into a Java "jar" file: 
 ``` text
-jar -cvf process_reviews_total.jar -C build/ .
+jar -cvf process_reviews.jar -C build/ .
 ```
 
 7.(Optional) Remove the previous results folder
