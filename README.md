@@ -13,11 +13,11 @@ mkdir build
 ```
 5. Compile the java code (all one line). You may see some warnings--that' ok.
 ``` text
-javac -cp /opt/cloudera/parcels/CDH/lib/hadoop/client/*:/opt/cloudera/parcels/CDH/lib/hbase/* PopulationBreakDown.java -d build -Xlint
+javac -cp /opt/cloudera/parcels/CDH/lib/hadoop/client/*:/opt/cloudera/parcels/CDH/lib/hbase/* PopulationBreakDown_total.java -d build -Xlint
 ```
 6. Now we wrap up our code into a Java "jar" file: 
 ``` text
-jar -cvf process_reviews.jar -C build/ .
+jar -cvf process_reviews_total.jar -C build/ .
 ```
 
 7.(Optional) Remove the previous results folder
@@ -26,7 +26,7 @@ hadoop fs -rm -r /user/aisamedi/product_reviews
 ```
 8. Execute the Jar File
 ``` text
-HADOOP_CLASSPATH=$(hbase mapredcp):/etc/hbase/conf hadoop jar process_reviews.jar PopulationBreakDown '/user/aisamedi/product_reviews'
+HADOOP_CLASSPATH=$(hbase mapredcp):/etc/hbase/conf hadoop jar process_reviews.jar PopulationBreakDown_total '/user/aisamedi/product_reviews'
 ```
 9. Verify the Output
 ``` text
