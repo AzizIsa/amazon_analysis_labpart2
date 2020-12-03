@@ -1,4 +1,3 @@
-# amazon_analysis_labpart2
 # Analysis Question:
 What is the distribution of verified / unverified by days of the week? Is there a significant difference?
 
