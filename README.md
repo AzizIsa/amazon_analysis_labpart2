@@ -1,7 +1,11 @@
 # amazon_analysis_labpart2
 # Analysis Question:
+What is the distribution of verified / unverified by days of the week? Is there a significant difference?
 
-Among reviewers, how does the population break down into these three buckets?  1) all reviews are unverified, 2) all reviews are verified, and 3) mix of unverified and verified reviews.
+# Analysis Results 
+
+![Caption for the picture.](/images/results_chart.png)
+
 
 # Steps to Run the code:
 1. Log into dsba-hadoop.uncc.edu using ssh
