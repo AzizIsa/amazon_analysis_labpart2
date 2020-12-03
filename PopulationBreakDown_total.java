@@ -35,13 +35,13 @@ import org.slf4j.LoggerFactory;
  * This Map-Reduce code will go through every Amazon review in rfox12:reviews
  * It will then output data on the top-level JSON keys
  */
-public class PopulationBreakDown extends Configured implements Tool {
+public class PopulationBreakDown_total extends Configured implements Tool {
 	// Just used for logging
-	protected static final Logger LOG = LoggerFactory.getLogger(PopulationBreakDown.class);
+	protected static final Logger LOG = LoggerFactory.getLogger(PopulationBreakDown_total.class);
 
 	// This is the execution entry point for Java programs
 	public static void main(String[] args) throws Exception {
-		int res = ToolRunner.run(HBaseConfiguration.create(), new PopulationBreakDown(), args);
+		int res = ToolRunner.run(HBaseConfiguration.create(), new PopulationBreakDown_total(), args);
 		System.exit(res);
 	}
 
@@ -52,8 +52,8 @@ public class PopulationBreakDown extends Configured implements Tool {
 		}
 
 		// Now we create and configure a map-reduce "job"     
-		Job job = Job.getInstance(getConf(), "PopulationBreakDown");
-		job.setJarByClass(PopulationBreakDown.class);
+		Job job = Job.getInstance(getConf(), "PopulationBreakDown_total");
+		job.setJarByClass(PopulationBreakDown_total.class);
     
     		// By default we are going to can every row in the table
 		Scan scan = new Scan();
@@ -98,7 +98,7 @@ public class PopulationBreakDown extends Configured implements Tool {
 		@Override
 		protected void setup(Context context) {
 			parser = new JsonParser();
-			rowsProcessed = context.getCounter("PopulationBreakDown", "Rows Processed");
+			rowsProcessed = context.getCounter("PopulationBreakDown_total", "Rows Processed");
     		}
   
   		// This "map" method is called with every row scanned.  
@@ -124,23 +124,17 @@ public class PopulationBreakDown extends Configured implements Tool {
 				sdf.setTimeZone(java.util.TimeZone.getTimeZone("EST")); 
 				String day_of_the_week = sdf.format(date);
 
-				//Extracting year out of unixtime
-				SimpleDateFormat sdf2 = new java.text.SimpleDateFormat("y"); 
-				sdf2.setTimeZone(java.util.TimeZone.getTimeZone("EST")); 
-				String year = sdf2.format(date);
-
-
 				String verified= jsonObject.get("verified").getAsString();
 				//String reviewerID= jsonObject.get("reviewerID").getAsString();		
 				//Bucket 1 and 2
 				if (verified.equals("true"))
                     { 
 						//System.out.println("Bucket 1(verified): " + reviewerID);
-						context.write(new Text(year+" verified-" + day_of_the_week),one);
+						context.write(new Text("verified-" + day_of_the_week),one);
 					}
 				else {
 						//System.out.println("Bucket 2 (unverified): " + reviewerID);
-						context.write(new Text(year+" Unverified-" + day_of_the_week),one);
+						context.write(new Text("unverified-" + day_of_the_week),one);
 					}	
 		
 				// Here we increment a counter that we can read when the job is done2
